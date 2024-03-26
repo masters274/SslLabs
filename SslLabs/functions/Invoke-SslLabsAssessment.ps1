@@ -32,7 +32,7 @@ function Invoke-SslLabsAssessment
     process
     {
         $Splat["Body"]["host"] = $HostName
-
+        $baseID = 10
         Write-Progress -Activity "Testing SSL configuration for host: [$HostName]" -Id 1
         $Response = Invoke-RestMethod @Splat
         $null = $Splat["Body"].Remove("startNew")
@@ -43,11 +43,11 @@ function Invoke-SslLabsAssessment
             {
                 $Index = $Response.endpoints.ipAddress.indexof($Endpoint.ipAddress)
                 $ProgressSplat = @{
-                    Activity = "Testing endpoint $($Response.endpoints.ipAddress)"
-                    CurrentOperation = $Response.endpoints.statusDetailsMessage
-                    PercentComplete = $Response.endpoints.progress
+                    Activity = "Testing endpoint $($Endpoint.ipAddress)"
+                    CurrentOperation = $Response.statusDetailsMessage
+                    PercentComplete = $Endpoint.progress
                     ParentId = 1
-                    Id = $Index
+                    Id = $Index + $baseID
                 }
                 Write-Progress @ProgressSplat
             }
