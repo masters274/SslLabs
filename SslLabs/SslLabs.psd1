@@ -1,6 +1,6 @@
 ﻿@{
     NestedModules = "SslLabs.psm1"
-    ModuleVersion = "0.1.0"
+    ModuleVersion = "0.1.5"
     GUID = "eecf6029-4e2e-4f0d-a572-e567ecb2c72f"
     Author = "Matt McNabb"
     Copyright = "(c)2017. All rights reserved."
